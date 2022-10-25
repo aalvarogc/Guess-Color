@@ -12,41 +12,70 @@ body{
 header{
     background-color: #2D8E99;
     color: white;
-    text-align: center;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }
 
 h2{
     font-weight: 100;
-    padding: 10px;
 }
 
 h1{
     font-weight: 100;
     font-size: 4em;
-    padding: 10px;
 }
 
 h3{
     color: black;
-    padding: 10px;
     text-transform: uppercase;
 }
 
 nav{
     background-color: white;
-    text-align: center;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#newcolors{
+.life{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.heart{
+    width: 33px;
+    position: relative;
+}
+
+.lostLife{
+    animation-name: lostLife;
+    animation-duration: .3s;
+}
+
+@keyframes lostLife{
+    0%{right: 7px}
+    25%{right: -7px}
+    50%{right: 7px}
+    75%{right: -7px}
+    100%{right: 7px;}
+}
+
+#newColorsBtn{
     border: none;
-    padding: 15px;
+    height: 5vh;
     color: #2D8E99;
     font-size: 20px;
     background-color: white;
     cursor: pointer;
+    margin-left: 50px;
 }
 
-#newcolors:hover{
+#newColorsBtn:hover{
     background-color: #2D8E99;
     color: white;
     transition: .2s;
@@ -54,11 +83,15 @@ nav{
 
 main{
     background-color: #232323;
-    height: 67vh;
-    display: grid;
-    grid-template-columns: auto auto auto;
+    height: 65vh;
+    display: flex;
     justify-content: center;
     align-items: center;
+}
+
+section{
+    display: grid;
+    grid-template-columns: auto auto auto;
     gap: 30px;
 }
 
@@ -68,9 +101,60 @@ main{
     height: 180px;
     border-radius: 20px;
     cursor: pointer;
+    position: relative;
+}
+
+.rotateDiv{
+    animation: rotateDiv 1s infinite linear;
+}
+
+@keyframes rotateDiv{
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }  
 }
 
 .randomColor:hover{
-    box-shadow: 5px 5px 7px white;
+    /* box-shadow: 5px 5px 7px white; */
     transition: .2s;
+}
+
+.fail{
+    animation-name: fail;
+    animation-duration: .7s;
+}
+
+@keyframes fail{
+    0%{transform: translateX(20%);}
+    25%{transform: translateX(-20%);}
+    50%{transform: translateX(20%);}
+    75%{transform: translateX(-20%);}
+    100%{transform: translateX(20%);}
+}
+
+/* Media queries para móvil */
+@media only screen
+and (min-width: 320px)
+and (max-width: 736px)
+{
+    h2{
+        font-size: 20px;
+    }
+    
+    h1{
+        font-size: 2.5em;
+    }
+    main{
+
+    }
+    .randomColor{
+        width: 100px;
+        height: 100px;
+    }
 }
